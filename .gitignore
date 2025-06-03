@@ -1,0 +1,30 @@
+# Bun lockfile
+bun.lockb
+
+# SQLite DB
+*.sqlite
+*.db
+
+# Output folders
+out
+dist
+node_modules
+*.tgz
+
+# Coverage
+coverage
+*.lcov
+
+# dotenv
+.env*
+!.env.example
+
+# caches
+.cache
+
+# IDEs
+.vscode
+.idea
+
+# macOS
+.DS_Store
