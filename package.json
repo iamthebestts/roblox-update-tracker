@@ -1,21 +1,32 @@
 {
-  "name": "roblox-update-tracker",
+  "name": "ro-tracker",
+  "description": "RoTracker: Base framework for tracking Roblox updates on Windows, Mac, iOS, & Android. Features version detection, history management, and TypeScript events. Extensible & contribution-friendly.",
+  "version": "1.0.0",
   "main": "src/index.ts",
   "type": "module",
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamthebestts/roblox-update-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamthebestts/roblox-update-tracker/issues"
+  },
   "author": {
     "name": "iamthebestts",
     "url": "https:/github.com/iamthebestts"
   },
-  "private": true,
+  "engines": {
+    "bun": ">=1.0.0"
+  },
   "scripts": {
     "start": "bun run ."
   },
   "dependencies": {
     "axios": "^1.9.0",
     "chalk": "^5.4.1",
-    "google-play-scraper": "^10.0.1",
-    "zod": "^3.25.50"
+    "google-play-scraper": "^10.0.1"
   },
   "devDependencies": {
     "@types/bun": "latest"

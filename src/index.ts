@@ -5,10 +5,11 @@ import {
   type Platform,
   type TrackerConfig,
 } from "./services/tracker";
-import { addTableRow, clearTableRows, drawScreen, gradientText } from "./services/banner";
+import { addTableRow, clearTableRows, gradientText, printBannerOnce } from "./services/banner";
+
+const CHECK_INTERVAL_MS = 5000 // 5 Seconds
 
 const trackers: Partial<Record<Platform, VersionTracker>> = {};
-
 const trackerUrls: Record<Platform, TrackerConfig> = {
   windows: {
     url: "https://clientsettingscdn.roblox.com/v1/client-version/WindowsPlayer",
@@ -56,7 +57,6 @@ const checkUpdates = async () => {
   }
 };
 
-setInterval(checkUpdates, 2000);
 
 versionEmitter.on("versionChanged", (data) => {
   switch (data.type) {
@@ -78,4 +78,12 @@ versionEmitter.on("versionChanged", (data) => {
 });
 
 clearTableRows()
-setInterval(drawScreen, 100);
+printBannerOnce()
+setInterval(checkUpdates, CHECK_INTERVAL_MS);
+
+process.on('uncaughtException', (ex) => {
+  addTableRow({
+    left: gradientText("Error:", "#FF0000", "#8B0000"),
+    right: gradientText(`Message: ${ex.message}`, "#FF0000", "#8B0000")
+  });
+})
